@@ -7,6 +7,8 @@ import API from "./utils/API";
 import { BookList, BookListItem } from "./components/BookList";
 import { Container, Row, Col } from "./components/Grid";
 
+
+
 class App extends Component {
   state = {
     results: [],
@@ -65,12 +67,12 @@ class App extends Component {
           </Row>
           <Row>
             <Col size="lg-12">
-              {!this.state.results.length ? (
+              {this.state.results === undefined ? (
                 <h4 className="text-center">No Books to Display</h4>
               ) : (
                   <BookList>
                     {this.state.results.map(book => {
-                      console.log(this.state.results);
+                  
                       return (
                         <BookListItem
                           key={book.volumeInfo.title}
@@ -79,7 +81,7 @@ class App extends Component {
                           authors={book.volumeInfo.authors}
                           description={book.volumeInfo.description}
                           href={book.volumeInfo.infoLink}
-                        />
+                         />
                       );
                     })}
                   </BookList>
